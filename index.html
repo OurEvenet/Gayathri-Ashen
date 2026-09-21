@@ -412,8 +412,8 @@ $("#ocal").href = ocal(`Engagement of ${CONFIG.couple}`, startD, endD);
 
 /* Reminders: each opens as a short calendar entry at that time */
 const REMINDERS = [
+  { id:"leaves14", at:"2026-10-02T08:00:00+05:30", label:"Place the leaves", sub:"Friday 2 October, 8.00 AM", text:`Place the leaves for ${CONFIG.couple}'s engagement, Fri 16 Oct, 9.00 AM` },
   { id:"week",   at:"2026-10-09T19:00:00+05:30", label:"One week before", sub:"Friday 9 October, 7.00 PM", text:`One week to go: ${CONFIG.couple}'s engagement, Fri 16 Oct, 9.00 AM` },
-  { id:"leaves", at:"2026-10-15T08:00:00+05:30", label:"Place the leaves", sub:"Thursday 15 October, 8.00 AM", text:`Place the leaves (gok kola) for ${CONFIG.couple}'s engagement, Fri 16 Oct, 9.00 AM`, note:"Put up the gok kola and greenery for the occasion" },
   { id:"eve",    at:"2026-10-15T19:00:00+05:30", label:"The evening before", sub:"Thursday 15 October, 7.00 PM", text:`Tomorrow: ${CONFIG.couple}'s engagement at 9.00 AM` },
   { id:"leave",  at:"2026-10-16T07:45:00+05:30", label:"Time to leave", sub:"Friday 16 October, 7.45 AM", text:`Time to leave for ${CONFIG.couple}'s engagement (9.00 AM)` }
 ];
@@ -422,7 +422,7 @@ REMINDERS.forEach(r => {
   const when = new Date(r.at), a = document.createElement("a");
   a.className = "row-link" + (store.get("rem:"+r.id) ? " done" : "");
   a.target="_blank"; a.rel="noopener"; a.href = gcal(r.text, when, new Date(+when + 15*6e4));
-  a.innerHTML = `<span class="mark">${tickSvg}</span><span class="flex-1"><span class="when block">${r.label}</span><span class="block text-[.95rem]" style="color:var(--muted)">${r.sub}</span>${r.note ? `<span class="block text-[.9rem] italic" style="color:var(--sage)">${r.note}</span>` : ""}</span><span class="tag" style="font-size:.6rem">${store.get("rem:"+r.id) ? "Added" : "Add"}</span>`;
+  a.innerHTML = `<span class="mark">${tickSvg}</span><span class="flex-1"><span class="when block">${r.label}</span><span class="block text-[.95rem]" style="color:var(--muted)">${r.sub}</span></span><span class="tag" style="font-size:.6rem">${store.get("rem:"+r.id) ? "Added" : "Add"}</span>`;
   if (when < new Date()) { a.style.opacity=".4"; a.style.pointerEvents="none"; a.setAttribute("aria-disabled","true"); }
   a.addEventListener("click", () => { store.set("rem:"+r.id,"1"); a.classList.add("done"); a.lastElementChild.textContent="Added"; });
   $("#reminders").appendChild(a);
