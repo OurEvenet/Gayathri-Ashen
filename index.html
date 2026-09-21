@@ -5,8 +5,33 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="color-scheme" content="light only">
 <meta name="theme-color" content="#ffffff">
-<title>Gayathri & Ashen · Friday 16 October 2026</title>
-<meta name="description" content="You are invited to the wedding of Gayathri & Ashen. Friday 16 October 2026, 9.00 AM, Hotel Chance Palace, Veyangoda.">
+<title>Gayathri & Ashen · Engagement · Friday 16 October 2026</title>
+<meta name="description" content="You are invited to the engagement of Gayathri &amp; Ashen. Friday 16 October 2026, 9.00 AM, Hotel Chance Palace, Veyangoda.">
+<link rel="canonical" href="https://ourevenet.github.io/Gayathri-Ashen/">
+
+<!-- The invitation couple, used for the tab icon and the home-screen icon -->
+<link rel="icon" href="favicon.ico" sizes="32x32">
+<link rel="icon" href="icon-192.png" type="image/png" sizes="192x192">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
+
+<!-- Link preview: what WhatsApp, Viber, Messenger and friends show while the page loads -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Gayathri &amp; Ashen">
+<meta property="og:locale" content="en_US">
+<meta property="og:title" content="You are invited · Gayathri &amp; Ashen">
+<meta property="og:description" content="Our engagement, Friday 16 October 2026 at 9.00 AM, Hotel Chance Palace, Veyangoda. Tap to reply and save the date.">
+<meta property="og:url" content="https://ourevenet.github.io/Gayathri-Ashen/">
+<meta property="og:image" content="https://ourevenet.github.io/Gayathri-Ashen/og-image.jpg">
+<meta property="og:image:secure_url" content="https://ourevenet.github.io/Gayathri-Ashen/og-image.jpg">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="A watercolour bride and groom above a ribbon reading You are invited">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="You are invited · Gayathri &amp; Ashen">
+<meta name="twitter:description" content="Our engagement, Friday 16 October 2026 at 9.00 AM, Hotel Chance Palace, Veyangoda.">
+<meta name="twitter:image" content="https://ourevenet.github.io/Gayathri-Ashen/og-image.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Ms+Madi&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Montserrat:wght@400;500&display=swap" rel="stylesheet">
@@ -129,13 +154,68 @@
 
   .toast{position:fixed;left:50%;bottom:calc(env(safe-area-inset-bottom,0px) + 80px);transform:translate(-50%,16px);opacity:0;background:var(--ink);color:#fff;padding:.65rem 1.2rem;font-family:var(--sans);font-size:.75rem;letter-spacing:.08em;transition:.25s;z-index:60;pointer-events:none;white-space:nowrap}
   .toast.show{opacity:1;transform:translate(-50%,0)}
+
+  /* ---------- Cozy motion: everything here is quiet, slow and optional ---------- */
+
+  /* sections drift up into place as you scroll */
+  .reveal{opacity:0;transform:translateY(20px);transition:opacity .85s cubic-bezier(.22,.61,.36,1),transform .85s cubic-bezier(.22,.61,.36,1)}
+  .reveal.in{opacity:1;transform:none}
+
+  /* the countdown digits give a soft nudge as they change */
+  .num.bump{animation:bump .45s cubic-bezier(.22,.61,.36,1)}
+  @keyframes bump{40%{transform:translateY(-2px) scale(1.06)}100%{transform:none}}
+
+  /* the daisy centre in each rule breathes */
+  .rule i{animation:glow 5s ease-in-out infinite}
+  @keyframes glow{50%{box-shadow:0 0 0 3px #fff,0 0 0 5px var(--sage)}}
+
+  /* buttons lift a little under the finger */
+  .btn{transition:background .2s,color .2s,border-color .2s,transform .2s,box-shadow .2s}
+  .btn:hover{transform:translateY(-2px);box-shadow:0 8px 18px -12px rgba(60,75,58,.55)}
+  .btn:active{transform:translateY(0);box-shadow:none}
+  .step{transition:transform .15s,background .2s}
+  .step:active{transform:scale(.92)}
+  .opt span{transition:background .25s,color .25s,border-color .25s,transform .25s}
+  .opt input:checked + span{transform:translateY(-1px)}
+  .field{transition:border-color .25s,box-shadow .25s}
+
+  /* reminder and contact rows ease open on hover */
+  .row-link{transition:background .25s,padding-left .25s}
+  .row-link:hover{padding-left:.75rem}
+  .row-link .mark svg{transform:scale(.4);opacity:0;transition:transform .3s cubic-bezier(.34,1.56,.64,1),opacity .2s}
+  .row-link.done .mark svg{transform:scale(1);opacity:1}
+
+  /* the closing line breathes like a candle */
+  .foot p{animation:breathe 8s ease-in-out infinite}
+  @keyframes breathe{50%{transform:scale(1.025)}}
+
+  /* eucalyptus leaves drifting over the paper */
+  .leaves{position:fixed;inset:0;z-index:30;pointer-events:none;overflow:hidden}
+  .leaf{position:absolute;top:-12vh;color:var(--sage);opacity:0;will-change:transform;animation:drift linear infinite}
+  .leaf svg{display:block;width:100%;height:100%}
+  @keyframes drift{
+    0%{transform:translate3d(0,0,0) rotate(0deg);opacity:0}
+    12%{opacity:.34}
+    50%{transform:translate3d(26px,60vh,0) rotate(160deg);opacity:.3}
+    88%{opacity:.22}
+    100%{transform:translate3d(-14px,124vh,0) rotate(340deg);opacity:0}
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .reveal{opacity:1;transform:none;transition:none}
+    .leaves{display:none}
+    .rule i,.foot p,.leaf,.num.bump{animation:none}
+    .btn:hover,.opt input:checked + span,.step:active{transform:none;box-shadow:none}
+    .row-link:hover{padding-left:.2rem}
+    .row-link .mark svg{transform:scale(1);opacity:1;transition:none}
+  }
 </style>
 </head>
 <body>
 <div class="sheet">
 
   <!-- ===== The invitation ===== -->
-  <header class="card" id="top" role="img" aria-label="You are invited. Gayathri and Ashen. Friday, October 16, 2026, 9.00 AM. Hotel Chance Palace, Mallehewa Road, Kottala, Veyangoda.">
+  <header class="card" id="top" role="img" aria-label="You are invited to the engagement of Gayathri and Ashen. Friday, October 16, 2026, 9.00 AM. Hotel Chance Palace, Mallehewa Road, Kottala, Veyangoda.">
     <p class="names n1 c-x ink" aria-hidden="true">Gayathri</p>
     <p class="names amp c-x ink ink2" aria-hidden="true">&amp;</p>
     <p class="names n2 c-x ink ink3" aria-hidden="true">Ashen</p>
@@ -152,7 +232,7 @@
 
   <!-- ===== Countdown ===== -->
   <section class="px-6 pt-10" aria-label="Countdown">
-    <p class="tag text-center m-0 mb-3" id="cdLabel">Until we say I do</p>
+    <p class="tag text-center m-0 mb-3" id="cdLabel">Until we say yes</p>
     <div class="band" style="grid-template-columns:repeat(4,1fr)" id="countdown">
       <div><div class="num" id="cdD">–</div><div class="tag mt-1" style="font-size:.6rem">Days</div></div>
       <div><div class="num" id="cdH">–</div><div class="tag mt-1" style="font-size:.6rem">Hours</div></div>
@@ -160,7 +240,7 @@
       <div><div class="num" id="cdS">–</div><div class="tag mt-1" style="font-size:.6rem">Secs</div></div>
     </div>
     <p class="text-center mt-8 mb-0 mx-auto text-[1.28rem] leading-relaxed italic" style="max-width:28ch">
-      With the blessings of our families, we warmly invite you to share in the joy of our wedding day.
+      With the blessings of our families, we warmly invite you to share in the joy of our engagement day.
     </p>
   </section>
 
@@ -243,7 +323,7 @@
     </div>
 
     <div class="band mt-7" style="grid-template-columns:1fr 1fr">
-      <div><div class="tag" style="font-size:.6rem">Ceremony</div><div class="text-[1.3rem] mt-1">9.00 in the morning</div></div>
+      <div><div class="tag" style="font-size:.6rem">Engagement</div><div class="text-[1.3rem] mt-1">9.00 in the morning</div></div>
       <div><div class="tag" style="font-size:.6rem">Date</div><div class="text-[1.3rem] mt-1">Friday, 16 October</div></div>
     </div>
 
@@ -275,6 +355,7 @@
     <a href="#contact" data-sec="contact"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M5.5 4h3.5l2 5-2.4 1.5a11 11 0 0 0 5 5L15 13l5 2v3.5a2 2 0 0 1-2 2A15.5 15.5 0 0 1 3.5 6a2 2 0 0 1 2-2Z"/></svg>Contact</a>
   </nav>
 </div>
+<div class="leaves" id="leaves" aria-hidden="true"></div>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
 <script>
@@ -291,8 +372,8 @@ const CONFIG = {
   address: "Mallehewa Road, Kottala, Veyangoda",
   mapsQuery: "Hotel Chance Palace, Mallehewa Road, Kottala, Veyangoda, Sri Lanka",
   contacts: [
-    { side: "bride", name: "Gayathri", role: "Bride", phone: "94777659731" },
-    { side: "groom", name: "Ashen",    role: "Groom", phone: "94784464128" }
+    { side: "bride", name: "Gayathri", role: "Bride to be", phone: "94777659731" },
+    { side: "groom", name: "Ashen",    role: "Groom to be", phone: "94784464128" }
   ]
 };
 
@@ -303,12 +384,19 @@ const fmtPhone = (p) => validPhone(p) ? "+" + p.slice(0,2) + " " + p.slice(2,4) 
 const toast = (m) => { const t=$("#toast"); t.textContent=m; t.classList.add("show"); clearTimeout(toast.t); toast.t=setTimeout(()=>t.classList.remove("show"),2200); };
 const store = { get(k){try{return localStorage.getItem(k)}catch(e){return null}}, set(k,v){try{localStorage.setItem(k,v)}catch(e){}} };
 
+/* A number that changes gives a small nudge, so the countdown feels alive */
+const setNum = (el, v) => {
+  if (el.textContent === v) return;
+  el.textContent = v;
+  el.classList.remove("bump"); void el.offsetWidth; el.classList.add("bump");
+};
+
 /* Countdown */
 function tick(){
   let ms = startD - Date.now();
   if (ms <= 0){ $("#cdLabel").textContent = Date.now() < endD ? "Today is the day" : "Thank you for celebrating with us"; $("#countdown").style.display="none"; return; }
   const d=Math.floor(ms/864e5); ms-=d*864e5; const h=Math.floor(ms/36e5); ms-=h*36e5; const m=Math.floor(ms/6e4); ms-=m*6e4; const s=Math.floor(ms/1e3);
-  $("#cdD").textContent=d; $("#cdH").textContent=String(h).padStart(2,"0"); $("#cdM").textContent=String(m).padStart(2,"0"); $("#cdS").textContent=String(s).padStart(2,"0");
+  setNum($("#cdD"), String(d)); setNum($("#cdH"), String(h).padStart(2,"0")); setNum($("#cdM"), String(m).padStart(2,"0")); setNum($("#cdS"), String(s).padStart(2,"0"));
 }
 tick(); setInterval(tick,1000);
 
@@ -316,24 +404,25 @@ tick(); setInterval(tick,1000);
 const utc = (d) => d.toISOString().replace(/[-:]/g,"").replace(/\.\d{3}/,"");
 const where = `${CONFIG.venue}, ${CONFIG.address}`;
 const mapsURL = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(CONFIG.mapsQuery)}`;
-const details = `You are invited to the wedding of ${CONFIG.couple}.\n\n${where}\nDirections: ${mapsURL}`;
+const details = `You are invited to the engagement of ${CONFIG.couple}.\n\n${where}\nDirections: ${mapsURL}`;
 const gcal = (t,s,e) => "https://calendar.google.com/calendar/render?" + new URLSearchParams({action:"TEMPLATE",text:t,details,location:where,ctz:"Asia/Colombo"}) + `&dates=${utc(s)}/${utc(e)}`;
 const ocal = (t,s,e) => "https://outlook.live.com/calendar/0/deeplink/compose?" + new URLSearchParams({path:"/calendar/action/compose",rru:"addevent",subject:t,startdt:s.toISOString(),enddt:e.toISOString(),body:details,location:where});
-$("#gcal").href = gcal(`Wedding of ${CONFIG.couple}`, startD, endD);
-$("#ocal").href = ocal(`Wedding of ${CONFIG.couple}`, startD, endD);
+$("#gcal").href = gcal(`Engagement of ${CONFIG.couple}`, startD, endD);
+$("#ocal").href = ocal(`Engagement of ${CONFIG.couple}`, startD, endD);
 
 /* Reminders: each opens as a short calendar entry at that time */
 const REMINDERS = [
-  { id:"week",  at:"2026-10-09T19:00:00+05:30", label:"One week before", sub:"Friday 9 October, 7.00 PM", text:`One week to go: ${CONFIG.couple}'s wedding, Fri 16 Oct, 9.00 AM` },
-  { id:"eve",   at:"2026-10-15T19:00:00+05:30", label:"The evening before", sub:"Thursday 15 October, 7.00 PM", text:`Tomorrow: ${CONFIG.couple}'s wedding at 9.00 AM` },
-  { id:"leave", at:"2026-10-16T07:45:00+05:30", label:"Time to leave", sub:"Friday 16 October, 7.45 AM", text:`Time to leave for ${CONFIG.couple}'s wedding (9.00 AM)` }
+  { id:"week",   at:"2026-10-09T19:00:00+05:30", label:"One week before", sub:"Friday 9 October, 7.00 PM", text:`One week to go: ${CONFIG.couple}'s engagement, Fri 16 Oct, 9.00 AM` },
+  { id:"leaves", at:"2026-10-15T08:00:00+05:30", label:"Place the leaves", sub:"Thursday 15 October, 8.00 AM", text:`Place the leaves (gok kola) for ${CONFIG.couple}'s engagement, Fri 16 Oct, 9.00 AM`, note:"Put up the gok kola and greenery for the occasion" },
+  { id:"eve",    at:"2026-10-15T19:00:00+05:30", label:"The evening before", sub:"Thursday 15 October, 7.00 PM", text:`Tomorrow: ${CONFIG.couple}'s engagement at 9.00 AM` },
+  { id:"leave",  at:"2026-10-16T07:45:00+05:30", label:"Time to leave", sub:"Friday 16 October, 7.45 AM", text:`Time to leave for ${CONFIG.couple}'s engagement (9.00 AM)` }
 ];
 const tickSvg = '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="m5 12 5 5 9-10"/></svg>';
 REMINDERS.forEach(r => {
   const when = new Date(r.at), a = document.createElement("a");
   a.className = "row-link" + (store.get("rem:"+r.id) ? " done" : "");
   a.target="_blank"; a.rel="noopener"; a.href = gcal(r.text, when, new Date(+when + 15*6e4));
-  a.innerHTML = `<span class="mark">${tickSvg}</span><span class="flex-1"><span class="when block">${r.label}</span><span class="block text-[.95rem]" style="color:var(--muted)">${r.sub}</span></span><span class="tag" style="font-size:.6rem">${store.get("rem:"+r.id) ? "Added" : "Add"}</span>`;
+  a.innerHTML = `<span class="mark">${tickSvg}</span><span class="flex-1"><span class="when block">${r.label}</span><span class="block text-[.95rem]" style="color:var(--muted)">${r.sub}</span>${r.note ? `<span class="block text-[.9rem] italic" style="color:var(--sage)">${r.note}</span>` : ""}</span><span class="tag" style="font-size:.6rem">${store.get("rem:"+r.id) ? "Added" : "Add"}</span>`;
   if (when < new Date()) { a.style.opacity=".4"; a.style.pointerEvents="none"; a.setAttribute("aria-disabled","true"); }
   a.addEventListener("click", () => { store.set("rem:"+r.id,"1"); a.classList.add("done"); a.lastElementChild.textContent="Added"; });
   $("#reminders").appendChild(a);
@@ -391,7 +480,7 @@ $("#rsvpForm").addEventListener("submit", (e) => {
   const note = $("#gMsg").value.trim();
   const to = CONFIG.contacts.find(c => c.side === side && validPhone(c.phone)) || CONFIG.contacts.find(c => validPhone(c.phone));
   if (!to){ toast("Reply numbers are being added. Please try again soon."); return; }
-  const lines = [`RSVP · Wedding of ${CONFIG.couple} · 16 Oct 2026`, ``, `Name: ${name}`, attend === "yes" ? `Attending: Yes, joyfully 🤍` : `Attending: Sorry, can't make it`];
+  const lines = [`RSVP · Engagement of ${CONFIG.couple} · 16 Oct 2026`, ``, `Name: ${name}`, attend === "yes" ? `Attending: Yes, joyfully 🤍` : `Attending: Sorry, can't make it`];
   if (attend === "yes") lines.push(`Guests: ${guests}`);
   if (note) lines.push(``, `Note: ${note}`);
   store.set("rsvp", JSON.stringify({name, attend, side, guests}));
@@ -399,6 +488,43 @@ $("#rsvpForm").addEventListener("submit", (e) => {
   $("#rsvpDone").classList.remove("hidden");
   $("#rsvpBtnText").textContent = "Update reply on WhatsApp";
 });
+
+/* Sections drift up into place the first time they come into view */
+(() => {
+  const blocks = [];
+  document.querySelectorAll("section, .foot").forEach(sec => {
+    [...sec.children].forEach((el, i) => { el.classList.add("reveal"); el.style.transitionDelay = Math.min(i, 5) * 80 + "ms"; blocks.push(el); });
+  });
+  if (!("IntersectionObserver" in window)) { blocks.forEach(el => el.classList.add("in")); return; }
+  const ro = new IntersectionObserver((es) => es.forEach(en => {
+    if (en.isIntersecting){ en.target.classList.add("in"); ro.unobserve(en.target); }
+  }), { rootMargin:"0px 0px -6% 0px", threshold:.06 });
+  blocks.forEach(el => ro.observe(el));
+  /* nothing should stay hidden if the observer never fires */
+  setTimeout(() => blocks.forEach(el => el.classList.add("in")), 4000);
+})();
+
+/* A few eucalyptus leaves drifting slowly over the paper */
+(() => {
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  const leafSvg = '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.5 3.5c-7 0-12.5 3-14.8 7.8-1.6 3.3-1 6.8.4 8.9l1.5-1.5c-.6-1.3-.9-2.9-.4-4.6 1.4 1 3.4 1.5 5.4 1.1 4.9-.9 8-5.7 7.9-11.7ZM5.2 21.4 3.8 20l5.4-5.4c1.3-1.3 3-2.6 4.8-3.5-1.4 1.2-2.8 2.5-4 3.7l-4.8 6.6Z"/></svg>';
+  const layer = document.getElementById("leaves");
+  const leaves = [
+    { left:"6%",  size:15, dur:23, delay:0 },
+    { left:"24%", size:11, dur:29, delay:5 },
+    { left:"45%", size:17, dur:26, delay:11 },
+    { left:"62%", size:12, dur:32, delay:3 },
+    { left:"79%", size:15, dur:25, delay:16 },
+    { left:"92%", size:10, dur:30, delay:8 }
+  ];
+  leaves.forEach(l => {
+    const el = document.createElement("span");
+    el.className = "leaf";
+    el.style.cssText = `left:${l.left};width:${l.size}px;height:${l.size}px;animation-duration:${l.dur}s;animation-delay:-${l.delay}s`;
+    el.innerHTML = leafSvg;
+    layer.appendChild(el);
+  });
+})();
 
 /* Active section in the bottom bar */
 const links = [...document.querySelectorAll(".dock a")];
